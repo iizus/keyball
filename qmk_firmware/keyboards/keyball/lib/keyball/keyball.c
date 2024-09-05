@@ -644,6 +644,7 @@ void keyball_handle_auto_mouse_layer_change(layer_state_t state) {
         set_auto_mouse_timeout(get_auto_mouse_keep_time());
         keyball.total_mouse_movement = 0;
     }
+    keyball.last_layer_state = AUTO_MOUSE_DEFAULT_LAYER;
 }
 #endif
 
