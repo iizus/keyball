@@ -636,15 +636,13 @@ void keyball_handle_auto_mouse_layer_change(layer_state_t state) {
     layer_state_t last_state = keyball.last_layer_state;
     // go into AML
     if (!layer_state_cmp(last_state, AUTO_MOUSE_DEFAULT_LAYER) && layer_state_cmp(state, AUTO_MOUSE_DEFAULT_LAYER)) {
-        keyball.last_layer_state = AUTO_MOUSE_DEFAULT_LAYER;
         keyball.total_mouse_movement = 0;
     } // go out AML
     else if (layer_state_cmp(last_state, AUTO_MOUSE_DEFAULT_LAYER) && !layer_state_cmp(state, AUTO_MOUSE_DEFAULT_LAYER)) {
-        keyball.last_layer_state = state;
         set_auto_mouse_timeout(get_auto_mouse_keep_time());
         keyball.total_mouse_movement = 0;
     }
-    keyball.last_layer_state = AUTO_MOUSE_DEFAULT_LAYER;
+    keyball.last_layer_state = state;
 }
 #endif
 
