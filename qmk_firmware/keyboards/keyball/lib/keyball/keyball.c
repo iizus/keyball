@@ -31,7 +31,7 @@ const uint8_t SCROLL_DIV_MAX = 7;
 
 const uint16_t AML_TIMEOUT_MIN = 100;
 const uint16_t AML_TIMEOUT_MAX = 34464;
-const uint16_t AML_TIMEOUT_QU  = 50;   // Quantization Unit
+const uint16_t AML_TIMEOUT_QU  = 10000;   // Quantization Unit
 
 const uint16_t AML_ACTIVATE_THRESHOLD = 50;
 
