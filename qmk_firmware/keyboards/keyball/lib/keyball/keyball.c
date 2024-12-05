@@ -17,7 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "quantum.h"
 #ifdef SPLIT_KEYBOARD
-#    include "transactions.h"
+    #include "transactions.h"
 #endif
 
 #include "keyball.h"
