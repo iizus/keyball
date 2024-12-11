@@ -511,6 +511,7 @@ void keyball_handle_auto_mouse_layer_change(layer_state_t state) {
 }
 #endif
 
+
 //////////////////////////////////////////////////////////////////////////////
 // Keyboard hooks
 
