@@ -44,25 +44,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // RGB LED settings
 // #define WS2812_DI_PIN       D3
-// #ifdef RGBLIGHT_ENABLE
-// #    define RGBLED_NUM      48
-// #    define RGBLED_SPLIT    { 24, 24 }  // (24 + 22)
-// #    ifndef RGBLIGHT_LIMIT_VAL
-// #        define RGBLIGHT_LIMIT_VAL  150 // limitated for power consumption
-// #    endif
-// #    ifndef RGBLIGHT_VAL_STEP
-// #        define RGBLIGHT_VAL_STEP   15
-// #    endif
-// #    ifndef RGBLIGHT_HUE_STEP
-// #        define RGBLIGHT_HUE_STEP   17
-// #    endif
-// #    ifndef RGBLIGHT_SAT_STEP
-// #        define RGBLIGHT_SAT_STEP   17
-// #    endif
-// #endif
-// #ifdef RGB_MATRIX_ENABLE
-// #    define RGB_MATRIX_SPLIT    { 24, 24 }
-// #endif
+#ifdef RGBLIGHT_ENABLE
+#    define RGBLED_NUM      48
+#    define RGBLED_SPLIT    { 24, 24 }  // (24 + 22)
+#    ifndef RGBLIGHT_LIMIT_VAL
+#        define RGBLIGHT_LIMIT_VAL  150 // limitated for power consumption
+#    endif
+#    ifndef RGBLIGHT_VAL_STEP
+#        define RGBLIGHT_VAL_STEP   15
+#    endif
+#    ifndef RGBLIGHT_HUE_STEP
+#        define RGBLIGHT_HUE_STEP   17
+#    endif
+#    ifndef RGBLIGHT_SAT_STEP
+#        define RGBLIGHT_SAT_STEP   17
+#    endif
+#endif
+#ifdef RGB_MATRIX_ENABLE
+#    define RGB_MATRIX_SPLIT    { 24, 24 }
+#endif
 
 // #ifndef OLED_FONT_H
 // #    define OLED_FONT_H "keyboards/keyball/lib/logofont/logofont.c"
