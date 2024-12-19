@@ -91,40 +91,6 @@ static inline int8_t clip2int8(int16_t v) {
     return (v) < -127 ? -127 : (v) > 127 ? 127 : (int8_t)v;
 }
 
-#ifdef OLED_ENABLE
-static const char *format_4d(int8_t d) {
-    static char buf[5] = {0}; // max width (4) + NUL (1)
-    char        lead   = ' ';
-    if (d < 0) {
-        d    = -d;
-        lead = '-';
-    }
-    buf[3] = (d % 10) + '0';
-    d /= 10;
-    if (d == 0) {
-        buf[2] = lead;
-        lead   = ' ';
-    } else {
-        buf[2] = (d % 10) + '0';
-        d /= 10;
-    }
-    if (d == 0) {
-        buf[1] = lead;
-        lead   = ' ';
-    } else {
-        buf[1] = (d % 10) + '0';
-        d /= 10;
-    }
-    buf[0] = lead;
-    return buf;
-}
-
-static char to_1x(uint8_t x) {
-    x &= 0x0f;
-    return x < 10 ? x + '0' : x + 'a' - 10;
-}
-#endif
-
 static void add_cpi(int8_t delta) {
     int16_t v = keyball_get_cpi() + delta;
     keyball_set_cpi(v < 1 ? 1 : v);
@@ -392,7 +358,7 @@ static void rpc_get_info_invoke(void) {
 
     // split keyboard negotiation completed.
 
-#    ifdef VIA_ENABLE
+#ifdef VIA_ENABLE
     // adjust VIA layout options according to current combination.
     uint8_t  layouts = (keyball.this_have_ball ? (is_keyboard_left() ? 0x02 : 0x01) : 0x00) | (keyball.that_have_ball ? (is_keyboard_left() ? 0x01 : 0x02) : 0x00);
     uint32_t curr    = via_get_layout_options();
@@ -400,7 +366,7 @@ static void rpc_get_info_invoke(void) {
     if (next != curr) {
         via_set_layout_options(next);
     }
-#    endif
+#endif
 
     keyball_on_adjust_layout(KEYBALL_ADJUST_PRIMARY);
 }
