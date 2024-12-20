@@ -36,8 +36,6 @@ const uint16_t AML_TIMEOUT_QU  = 50;   // Quantization Unit
 const uint16_t AML_ACTIVATE_THRESHOLD = 50;
 
 static const char BL = '\xB0'; // Blank indicator character
-// static const char LFSTR_ON[] PROGMEM = "\xB2\xB3";
-// static const char LFSTR_OFF[] PROGMEM = "\xB4\xB5";
 
 keyball_t keyball = {
     .this_have_ball = false,
@@ -108,17 +106,8 @@ static uint16_t movement_size_of(report_mouse_t *rep) {
 //////////////////////////////////////////////////////////////////////////////
 // Pointing device driver
 
-#if KEYBALL_MODEL == 46
-void keyboard_pre_init_kb(void) {
-    keyball.this_have_ball = pmw3360_init();
-    keyboard_pre_init_user();
-}
-#endif
-
 void pointing_device_driver_init(void) {
-#if KEYBALL_MODEL != 46
     keyball.this_have_ball = pmw3360_init();
-#endif
     if (keyball.this_have_ball) {
 #if defined(KEYBALL_PMW3360_UPLOAD_SROM_ID)
 #    if KEYBALL_PMW3360_UPLOAD_SROM_ID == 0x04
@@ -173,9 +162,6 @@ __attribute__((weak)) void keyball_on_apply_motion_to_mouse_move(keyball_motion_
         r->x = -r->x;
         r->y = -r->y;
     }
-#elif KEYBALL_MODEL == 46
-    r->x = clip2int8(m->x);
-    r->y = -clip2int8(m->y);
 #else
 #    error("unknown Keyball model")
 #endif
@@ -199,9 +185,6 @@ __attribute__((weak)) void keyball_on_apply_motion_to_mouse_scroll(keyball_motio
         r->h = -r->h;
         r->v = -r->v;
     }
-#elif KEYBALL_MODEL == 46
-    r->h = clip2int8(x);
-    r->v = clip2int8(y);
 #else
 #    error("unknown Keyball model")
 #endif
