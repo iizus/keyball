@@ -7,10 +7,6 @@ logdir=tmp/build_log/${id}
 
 keyboards=()
 keyboards+=(keyball39)
-keyboards+=(keyball44)
-keyboards+=(keyball46)
-keyboards+=(keyball61)
-keyboards+=(one47)
 
 keymaps=()
 keymaps+=(test)
